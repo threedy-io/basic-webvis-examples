@@ -84,7 +84,7 @@
         const webvisComponent = document.querySelector('webvis-full');
         const myContext = await webvisComponent.requestContext();
         // get global viewer object
-        viewer = await webvisComponent.getViewer();
+        viewer = await webvisComponent.requestViewer();
         console.log('Viewer is ready...');
 
         // add box and enable it
