@@ -1,43 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head lang="en">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta charset="UTF-8" />
-    <title>Webvis iframe example</title>
-    <style>
-      html,
-      body {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        background-color: rgb(255, 199, 96);
-      }
+    <head lang="en">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="UTF-8" />
+        <title>Webvis iframe example</title>
+        <style>
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background-color: rgb(255, 199, 96);
+            }
 
-      iframe {
-        width: 100vw;
-        height: 50vh;
-      }
-    </style>
-  </head>
-  <body>
-    <h2>Parent</h2>
-    <p>
-      This examle shows how to send webvis events from an iFrame to its parent.
-    </p>
-    <p class="outputText">
-      <br />click on the cube to display information about it <br />
-      <br />
-    </p>
-    <iframe src="./webvis.html" frameborder="0"> </iframe>
+            iframe {
+                width: 100vw;
+                height: 50vh;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Parent</h2>
+        <p>This examle shows how to send webvis events from an iFrame to its parent.</p>
+        <p class="outputText">
+            <br />click on the cube to display information about it <br />
+            <br />
+        </p>
+        <iframe src="./webvis.html" frameborder="0"> </iframe>
 
-    <script>
-      window.addEventListener('message', receivedMessage, false);
+        <script>
+            // Add an event listener to the window to listen for messages from the iframe
+            window.addEventListener('message', receivedMessage, false);
 
-      function receivedMessage(event) {
-        console.debug(event.data);
-        const textElement = document.querySelector('.outputText');
-        textElement.innerHTML = `Object with ID ${event.data.targetNodeID} <br/> event: ${event.data.property} <br/> value: ${event.data.newValue}`;
-      }
-    </script>
-  </body>
+            // Function to handle messages received from the iframe
+            function receivedMessage(event) {
+                // Check if the message is from the expected source
+                if (event.data && event.data.source === 'my-iframe') {
+                    console.log('Message received from iframe:', event.data);
+
+                    // Check if the message is of type 'CUSTOM_EVENT'
+                    if (event.data.type === 'CUSTOM_EVENT') {
+                        // Update the content of the element with class 'outputText' with the received data
+                        const textElement = document.querySelector('.outputText');
+                        textElement.innerHTML = `Object with ID ${event.data.content.targetNodeID} <br/> event: ${event.data.content.property} <br/> value: ${event.data.content.newValue}`;
+                    }
+                }
+            }
+        </script>
+    </body>
 </html>

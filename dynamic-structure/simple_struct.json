@@ -1,0 +1,116 @@
+{
+    "nodes": {
+        "1": {
+            "type": "assembly",
+            "nodeID": 1,
+            "label": "Simple Structure Using Boxes",
+            "localTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+            "globalTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+            "matrix": "1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1",
+            "children": [2]
+        },
+        "2": {
+            "type": "assembly",
+            "nodeID": 2,
+            "label": "House",
+            "localTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+            "globalTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+            "matrix": "1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1",
+            "children": [3, 4, 5]
+        },
+        "3": {
+            "type": "assembly",
+            "nodeID": 3,
+            "label": "Walls",
+            "localTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+            "globalTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+            "matrix": "1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1",
+            "children": [6, 7, 8, 9]
+        },
+        "4": {
+            "type": "assembly",
+            "nodeID": 4,
+            "label": "Roof",
+            "localTransform": [
+                4.900000095367432, 0, 0, 0, 0, 1, 0, 0, 0, 0, 4.300000190734863, 0, 0,
+                0.6200000047683716, 0, 1
+            ],
+            "globalTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 4, 0, 1],
+            "matrix": "1 0 0 0 0 1 0 0 0 0 1 0 0 4 0 1",
+            "children": [10]
+        },
+        "5": {
+            "type": "assembly",
+            "nodeID": 5,
+            "label": "Floor",
+            "localTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -1, 0, 1],
+            "globalTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -1, 0, 1],
+            "matrix": "1 0 0 0 0 1 0 0 0 0 1 0 0 -1 0 1",
+            "children": [11]
+        },
+        "6": {
+            "type": "part",
+            "nodeID": 6,
+            "label": "Front Wall",
+            "localTransform": [4, 0, 0, 0, 0, 8.199999809265137, 0, 0, 0, 0, 1, 0, 0, 0, 2, 1],
+            "globalTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 2, 1],
+            "matrix": "1 0 0 0 0 1 0 0 0 0 1 0 0 0 2 1",
+            "appearanceURI": "urn:X-l3d:color:a:77",
+            "url": "urn:x-i3d:shape:box"
+        },
+        "7": {
+            "type": "part",
+            "nodeID": 7,
+            "label": "Back Wall",
+            "localTransform": [4, 0, 0, 0, 0, 8.199999809265137, 0, 0, 0, 0, 1, 0, 0, 0, -2, 1],
+            "globalTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -2, 1],
+            "matrix": "1 0 0 0 0 1 0 0 0 0 1 0 0 0 -2 1",
+            "url": "urn:x-i3d:shape:box"
+        },
+        "8": {
+            "type": "part",
+            "nodeID": 8,
+            "label": "Left Wall",
+            "localTransform": [
+                1, 0, 0, 0, 0, 8.199999809265137, 0, 0, 0, 0, 3.0999999046325684, 0, -2, 0, 0, 1
+            ],
+            "globalTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -2, 0, 0, 1],
+            "matrix": "1 0 0 0 0 1 0 0 0 0 1 0 -2 0 0 1",
+            "url": "urn:x-i3d:shape:box"
+        },
+        "9": {
+            "type": "part",
+            "nodeID": 9,
+            "label": "Right Wall",
+            "localTransform": [
+                1, 0, 0, 0, 0, 8.199999809265137, 0, 0, 0, 0, 3.0999999046325684, 0, 2, 0, 0, 1
+            ],
+            "globalTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1],
+            "matrix": "1 0 0 0 0 1 0 0 0 0 1 0 2 0 0 1",
+            "url": "urn:x-i3d:shape:box"
+        },
+        "10": {
+            "type": "part",
+            "nodeID": 10,
+            "label": "Roof",
+            "localTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 4, 0, 1],
+            "globalTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 4, 0, 1],
+            "matrix": "1 0 0 0 0 1 0 0 0 0 1 0 0 4 0 1",
+            "url": "urn:x-i3d:shape:box"
+        },
+        "11": {
+            "type": "part",
+            "nodeID": 11,
+            "label": "Floor",
+            "localTransform": [
+                8, 0, 0, 0, 0, 0.10000000149011612, 0, 0, 0, 0, 8, 0, 0.009999999776482582,
+                -3.0299999713897705, 0, 1
+            ],
+            "globalTransform": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -1, 0, 1],
+            "matrix": "1 0 0 0 0 1 0 0 0 0 1 0 0 -1 0 1",
+            "url": "urn:x-i3d:shape:box"
+        }
+    },
+
+    "root": 1
+}

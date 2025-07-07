@@ -1,47 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head lang="en">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta charset="UTF-8" />
+    <head lang="en">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="UTF-8" />
 
-    <!-- Please replace URL with your own webvisURL -->
-    <script src="https://demo.threedy.io/repo/webvis/webvis.js?next"></script>
-  </head>
-  <body>
-    <h2>iFrame</h2>
-    <webvis-viewer context="myContext"></webvis-viewer>
-    <script>
-      let myContext;
-      let webvisComponent = document.querySelector('webvis-viewer');
-      // gets the webvisContext, adds a model and enables it
-      async function init() {
-        myContext = await webvisComponent.requestContext();
-        const rootNode = myContext.add('urn:x-i3d:shape:box');
-        await myContext.setProperty(rootNode, 'enabled', true);
+        <!-- Please replace URL with your own webvisURL -->
+        <script src="https://demo.threedy.io/repo/webvis/webvis.js?next"></script>
+    </head>
+    <body>
+        <h2>iFrame</h2>
+        <webvis-viewer context="myContext"></webvis-viewer>
+        <script>
+            let myContext;
+            let webvisComponent = document.querySelector('webvis-viewer');
+            // gets the webvisContext, adds a model and enables it
+            async function init() {
+                myContext = await webvisComponent.requestContext();
+                const rootNode = myContext.add('urn:x-i3d:shape:box');
+                await myContext.setProperty(rootNode, 'enabled', true);
 
-        myContext.registerListener(
-          [webvis.EventType.NODE_CHANGED],
-          (event) => {
-            //send a message with event data to the parent
-            window.parent.postMessage(event, '*');
-          },
-          0,
-          true
-        );
-      }
-      init();
-    </script>
-  </body>
+                myContext.registerListener(
+                    [webvis.EventType.NODE_CHANGED],
+                    (event) => {
+                        const eventData = {
+                            source: 'my-iframe', // Add a unique identifier for filtering
+                            type: 'CUSTOM_EVENT',
+                            content: event,
+                        };
+                        //send a message with event data to the parent
+                        window.parent.postMessage(eventData, '*');
+                    },
+                    0,
+                    true
+                );
+            }
+            init();
+        </script>
+    </body>
 </html>
 
 <style>
-  html,
-  body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-image: linear-gradient(to bottom, #dddddd 85%, #cccccc 100%);
-  }
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-image: linear-gradient(to bottom, #dddddd 85%, #cccccc 100%);
+    }
 </style>
