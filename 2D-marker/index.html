@@ -1,9 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html>
     <head lang="en">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Webvis 2D element example</title>
         <!-- Please replace URL with your own webvisURL -->
         <script src="https://demo.threedy.io/repo/webvis/webvis.js?next"></script>
@@ -68,7 +67,7 @@
              */
             async function init() {
                 // wait until the viewer object is created
-                console.log('Wait until viewer is created.....');
+                console.log('Wait until viewer is created...');
                 const webvisComponent = document.querySelector('webvis-full');
                 const myContext = await webvisComponent.requestContext();
                 // get global viewer object
