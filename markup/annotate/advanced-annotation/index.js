@@ -9,7 +9,7 @@ async function init() {
     const webvisComponent = document.querySelector('webvis-viewer');
     const webvisContext = await webvisComponent.requestContext();
 
-    console.log('Viewer is created...DONE');
+    console.log('Viewer is created...DONE.');
 
     // add box and enable it
     const rootNode = webvisContext.add({
