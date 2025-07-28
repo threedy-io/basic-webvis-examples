@@ -17,7 +17,7 @@ const pois = [];
  */
 async function init() {
     // wait until the viewer object is created
-    console.log('Wait until viewer is created...');
+    console.log('Wait until viewer is created....');
     const webvisComponent = document.querySelector('webvis-viewer');
     const myContext = await webvisComponent.requestContext();
     // get global viewer object
