@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head lang="en">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="UTF-8" />
+        <title>Webvis 2D annotations API example</title>
+        <!-- Please replace URL with your own webvisURL -->
+        <script src="https://demo.threedy.io/repo/webvis/webvis.js?next"></script>
+        <style>
+            html {
+                width: 100%;
+                height: 100%;
+            }
+
+            body {
+                font-family: 'robotoregular', 'Helvetica Neue', Helvetica, Arial, 'sans-serif';
+                font-size: 10pt;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-touch-callout: none;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                background-image: -o-linear-gradient(bottom, #dddddd 85%, #cccccc 100%);
+                background-image: -moz-linear-gradient(bottom, #dddddd 85%, #cccccc 100%);
+                background-image: -webkit-linear-gradient(bottom, #dddddd 85%, #cccccc 100%);
+                background-image: -ms-linear-gradient(bottom, #dddddd 85%, #cccccc 100%);
+                background-image: linear-gradient(bottom, #dddddd 85%, #cccccc 100%);
+                overflow: hidden;
+            }
+
+            .poi {
+                height: 25px;
+                width: 25px;
+                background-color: rgb(236, 222, 91);
+                border-radius: 50%;
+                display: inline-block;
+                text-align: center;
+                position: absolute;
+            }
+        </style>
+    </head>
+
+    <body>
+        <webvis-viewer></webvis-viewer>
+        <script src="index.js"></script>
+    </body>
+</html>
