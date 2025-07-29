@@ -43,7 +43,7 @@ async function init() {
     context = await webvis.requestContext('myContext');
     console.log('initialized context');
     //Create Viewers
-    const viewer1 = context.createViewer('myFirstViewer', canvas1);
+    const viewer1 = context.createViewer('myFirstViewer ', canvas1);
     const viewer2 = context.createViewer('mySecondViewer', canvas2);
     const viewer3 = context.createViewer('myThirdViewer', canvas3);
     const viewer4 = context.createViewer('myFourthViewer', canvas4);
