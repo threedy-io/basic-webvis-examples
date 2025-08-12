@@ -1,51 +1,118 @@
 /**
- * initialize function
- * - adds a simple cube and enables it
- * - creates the PoIs (Points of Interest)
- * - registers a listener to update the PoIs if the view changes
+ * @fileoverview WebVis Simple Annotation Example
+ * Demonstrates basic annotation creation and removal on model corners.
  */
-async function init() {
-    // Get the context object from the webvis-viewer element.
-    const webvisComponent = document.querySelector('webvis-viewer');
-    const webvisContext = await webvisComponent.requestContext();
 
-    console.log('Viewer is created...DONE');
-    // add box and enable it
-    const rootNode = webvisContext.add({
-        dataURI: 'urn:x-i3d:shape:box',
-    });
-    await webvisContext.setProperty(rootNode, 'enabled', true);
+const PRIMITIVE_MODEL_URI = 'urn:x-i3d:shape:cube';
 
-    // create the HTML elements representing the POIs (Point of interests)
-    createAnnotations(rootNode, webvisContext);
-}
+let webvisContext = null;
+let modelNodeId = null;
 
 /**
- * creates the HTML elements representing the POIs.
- *
- * @param {number} - The id of the cube-node.
+ * Initialize the WebVis example by setting up context, loading model, and configuring handlers
+ * @async
+ * @function initializeWebVisExample
+ * @returns {Promise<void>}
+ * @throws {Error} When WebVis context initialization fails
  */
-function createAnnotations(nodeId, webvisContext) {
-    // variable to enumerate the corners
-    let corner = 0;
-    // the simple cube is has an edge length of 1 with the center at [0,0,0],
-    // therefore the left-front-lower corner is at [-0.5, -0.5, -0.5]
-    // and the right-back-upper corner at [0.5, 0.5, 0.5]
-    for (let x = -0.5; x <= 0.5; x++) {
-        for (let y = -0.5; y <= 0.5; y++) {
-            for (let z = -0.5; z <= 0.5; z++) {
-                const label = `This corner <b>${corner}</b>`;
-                webvisContext.createAnnotation(
-                    nodeId,
-                    label,
-                    true,
-                    [x, y, z],
-                    [x * 0.2, y * 0.2, z * 0.2]
-                );
-                corner++;
-            }
+async function initializeWebVisExample() {
+    try {
+        const webvisComponent = document.querySelector('webvis-viewer');
+
+        // WEBVIS_API: Get the webvis component and request context
+        webvisContext = await webvisComponent.requestContext();
+
+        if (!webvisContext) {
+            throw new Error('WebVis context initialization failed');
         }
+
+        // WEBVIS_API: Add a simple box model to the scene
+        modelNodeId = webvisContext.add({ dataURI: PRIMITIVE_MODEL_URI });
+        await webvisContext.setProperty(modelNodeId, webvis.Property.ENABLED, true);
+
+        // Initialize button handlers
+        initializeButtonHandlers();
+
+        console.log('WebVis example initialized successfully');
+        logActivity('info', 'WebVis example initialized successfully');
+    } catch (error) {
+        console.error('WebVis initialization error:', error);
+        logActivity('error', `Initialization failed: ${error.message}`);
     }
 }
 
-init();
+/**
+ * Initialize button event handlers for annotation controls
+ * @function initializeButtonHandlers
+ */
+function initializeButtonHandlers() {
+    document.getElementById('addAnnotationBtn').addEventListener('click', addAnnotations);
+    document.getElementById('removeAnnotationBtn').addEventListener('click', removeAnnotations);
+}
+
+/**
+ * Add annotations to all 8 corners of the cube model
+ * Creates numbered annotations with anchor and content offset positions
+ * @async
+ * @function addAnnotations
+ * @returns {Promise<void>}
+ */
+async function addAnnotations() {
+    if (!webvisContext || !modelNodeId) return;
+
+    let cornerNumber = 0;
+
+    // Create annotations at all 8 corners of the cube
+    for (let xPosition = -0.5; xPosition <= 0.5; xPosition++) {
+        for (let yPosition = -0.5; yPosition <= 0.5; yPosition++) {
+            for (let zPosition = -0.5; zPosition <= 0.5; zPosition++) {
+                // WEBVIS_API: Create an annotation at the specified position
+                await webvisContext.createAnnotation(
+                    modelNodeId,
+                    `Corner ${cornerNumber}`,
+                    true,
+                    [xPosition, yPosition, zPosition],
+                    [xPosition * 0.2, yPosition * 0.2, zPosition * 0.2]
+                );
+                cornerNumber++;
+            }
+        }
+    }
+
+    logActivity('success', 'Annotations created successfully');
+}
+
+/**
+ * Remove all annotations from the scene
+ * Retrieves all annotation IDs and removes them individually
+ * @function removeAnnotations
+ */
+function removeAnnotations() {
+    if (!webvisContext) return;
+
+    // WEBVIS_API: Get all annotation IDs
+    const annotationIds = webvisContext.getAnnotations();
+
+    // WEBVIS_API: Remove each annotation by ID
+    annotationIds.forEach((id) => webvisContext.removeAnnotation(id));
+    logActivity('success', 'Annotations removed successfully');
+}
+
+/**
+ * Utility function for logging activity messages to the activity panel
+ * @function logActivity
+ * @param {string} type - The type of log entry (e.g., 'info', 'success', 'error')
+ * @param {string} message - The message to log
+ */
+function logActivity(type, message) {
+    const log = document.getElementById('activityLog');
+    if (log) {
+        const entry = document.createElement('div');
+        entry.className = `log-entry ${type}`;
+        entry.innerHTML = `<span class="log-time">${new Date().toLocaleTimeString()}</span><span class="log-message">${message}</span>`;
+        log.appendChild(entry);
+        log.scrollTop = log.scrollHeight;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', initializeWebVisExample);

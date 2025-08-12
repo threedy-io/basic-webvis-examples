@@ -1,38 +1,32 @@
-
 # iframe Integration
 
 ![iframe Integration](./thumb.png)
 
 ## Overview
 
-This example demonstrates how to integrate WebVis viewers within HTML iframes and establish communication between the iframe and its parent window. Learn how to embed WebVis in isolated iframe environments while maintaining event communication and data exchange between the iframe and parent page.
+This example demonstrates WebVis integration within HTML iframes and cross-frame communication. A WebVis viewer runs inside an iframe with a simple cube model, and when you interact with the cube, events are forwarded to the parent window and displayed in real-time.
 
 ## Key Features Demonstrated
 
-- **iframe Embedding**: Loading WebVis viewer within an HTML iframe
-- **Cross-Frame Communication**: Sending messages from iframe to parent window
-- **Event Forwarding**: Capturing WebVis events and forwarding them to parent
-- **Message Protocol**: Implementing custom message protocols for communication
-- **Dynamic Content Updates**: Updating parent page content based on iframe events
+- **iframe Embedding** - WebVis viewer running inside an HTML iframe
+- **Cross-Frame Communication** - postMessage API for iframe-to-parent communication
+- **Event Forwarding** - WebVis NODE_CHANGED events sent from iframe to parent
+- **Real-time Display** - Parent window updates output text and activity log
+- **Simple Interaction** - Click on cube in iframe to trigger events
 
 ## Getting Started
-**Interact with iframe Communication**:
-   - **View the Setup**: Notice the WebVis viewer loaded within the iframe
-   - **Click on the Cube**: Click on the 3D model in the iframe
-   - **Observe Communication**: See how event information appears in the parent window
-   - **Monitor Console**: Check browser console for message communication logs
 
-## Technical Configuration
+1. **View Setup** - Notice the WebVis viewer with cube loaded in the iframe below
+2. **Click Cube** - Click on the 3D cube model inside the iframe
+3. **Observe Communication** - See event information appear in the Controls panel above
+4. **Check Activity Log** - Monitor the activity log for detailed event messages
+5. **Interact More** - Continue clicking to see additional event communications
 
-- **WebVis Source**: The example uses the demo instance at `https://demo.threedy.io/repo/webvis/webvis.js?next`
-- **Custom Configuration**: To use your own instant3Dhub installation, update the script source in `webvis.html` line 8:
-  ```html
-  <script src="YOUR_HUB_INSTANCE/repo/webvis/webvis.js"></script>
-  ```
 ## API Reference
 
 This example uses the WebVis Context API.  
-See the official documentation for details:  
+See the official documentation for details:
+
 - [WebVis Context API](https://docs.threedy.io/latest/doc/webvis/interfaces/ContextAPI.html#contextapi)
 
 ---

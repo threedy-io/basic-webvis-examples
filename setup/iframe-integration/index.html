@@ -1,155 +1,56 @@
 <!doctype html>
-<html>
-    <head lang="en">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<html lang="en">
+    <head>
         <meta charset="UTF-8" />
-        <title>Webvis iframe example</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            html,
-            body {
-                width: 100%;
-                height: 100%;
-                font-family:
-                    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-                    Cantarell, sans-serif;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: #333;
-                line-height: 1.6;
-            }
-
-            .container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 2rem;
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .header {
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(10px);
-                border-radius: 16px;
-                padding: 2rem;
-                margin-bottom: 2rem;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-            }
-
-            h2 {
-                font-size: 2.5rem;
-                font-weight: 700;
-                color: #2c3e50;
-                margin-bottom: 1rem;
-                background: linear-gradient(135deg, #667eea, #764ba2);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-
-            .description {
-                font-size: 1.1rem;
-                color: #5a6c7d;
-                margin-bottom: 1.5rem;
-            }
-
-            .output-section {
-                background: rgba(255, 255, 255, 0.9);
-                backdrop-filter: blur(10px);
-                border-radius: 12px;
-                padding: 1.5rem;
-                margin-bottom: 1rem;
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                min-height: 80px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .outputText {
-                font-size: 1rem;
-                color: #2c3e50;
-                text-align: center;
-                font-weight: 500;
-            }
-
-            .iframe-container {
-                flex: 1;
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(10px);
-                border-radius: 16px;
-                padding: 1.5rem;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                overflow: hidden;
-            }
-
-            .iframe-label {
-                font-size: 1rem;
-                font-weight: 600;
-                color: #5a6c7d;
-                margin-bottom: 1rem;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-            }
-
-            iframe {
-                width: 100%;
-                height: calc(100% - 2rem);
-                border: none;
-                border-radius: 12px;
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-                background: white;
-            }
-
-            @media (max-width: 768px) {
-                .container {
-                    padding: 1rem;
-                }
-
-                h2 {
-                    font-size: 2rem;
-                }
-
-                .header {
-                    padding: 1.5rem;
-                }
-
-                .iframe-container {
-                    padding: 1rem;
-                }
-            }
-        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>iframe Integration - WebVis</title>
+        <script src="https://hubdemo.threedy.io/repo/webvis/webvis.js"></script>
+        <link rel="stylesheet" href="./style.css" />
     </head>
-    <body>
-        <div class="container">
-            <div class="header">
-                <h2>iframe Communication</h2>
-                <p class="description">
-                    This example shows how to send WebVis events from an iframe to its parent
-                    window.
-                </p>
-            </div>
 
-            <div class="output-section">
-                <p class="outputText">
-                    Click on the cube in the iframe below to display information about it
-                </p>
-            </div>
+    <body>
+        <div class="webvis-template">
+            <header class="template-header">
+                <div class="header-brand">
+                    <div class="brand-logo">
+                        <img src="/public/assets/logo.png" alt="Logo" />
+                    </div>
+                    <div class="brand-content">
+                        <h1>iframe Integration</h1>
+                        <p>
+                            Demonstrates WebVis integration within HTML iframes and cross-frame
+                            communication. <br />A WebVis viewer runs inside an iframe with a simple
+                            cube model, and when you interact with the cube, events are forwarded to
+                            the parent window and displayed in real-time.
+                        </p>
+                    </div>
+                </div>
+            </header>
+
+            <aside class="template-sidebar">
+                <div class="sidebar-panel controls">
+                    <h2 class="panel-title">Controls</h2>
+                    <div class="outputText">
+                        Click on the cube in the iframe below to display information about it
+                    </div>
+                </div>
+
+                <div class="sidebar-panel activity">
+                    <h2 class="panel-title">📋 Activity Log</h2>
+                    <div class="activity-log" id="activityLog"></div>
+                </div>
+            </aside>
 
             <div class="iframe-container">
                 <div class="iframe-label">WebVis iframe Content</div>
-                <iframe src="./webvis.html"></iframe>
+                <iframe
+                    class="template-viewer"
+                    src="./iFrame/index.html"
+                    title="WebVis iframe Content"
+                ></iframe>
             </div>
         </div>
 
-        <script src="index.js"></script>
+        <script src="./index.js"></script>
     </body>
 </html>

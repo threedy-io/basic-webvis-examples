@@ -1,28 +1,31 @@
-# Simple Text Annotations
+# Simple Annotations
 
 ![Simple Annotations Example](./thumb.png)
 
 ## Overview
 
-This example demonstrates the fundamental usage of the WebVis Annotation API for placing simple text annotations in 3D space. Learn how to create, position, and style basic text-based annotations that maintain their spatial relationship with 3D models.
+This example demonstrates basic WebVis annotation functionality by creating and removing simple text annotations at all 8 corners of a cube model. Perfect for learning the fundamentals of WebVis annotation API.
 
 ## Key Features Demonstrated
 
-- **Basic Text Annotations**: Simple text content placement in 3D space
-- **3D Positioning**: Accurate positioning of annotations at specific world coordinates
-- **Interactive Placement**: Dynamic annotation creation based on user interaction
-- **Responsive Design**: Annotations that adapt to viewport changes
+- **Bulk Annotation Creation** - Creates 8 numbered annotations at all cube corners
+- **Simple Text Content** - Basic text annotations with corner numbering
+- **Bulk Removal** - Remove all annotations with a single action
+- **Activity Logging** - Real-time feedback for all operations
+- **Clean Interface** - Two-button control system for easy interaction
 
 ## Getting Started
- **Interact with Annotations**:
-   - **Click** on the 3D model to place new annotations
-   - **Rotate** the view to see annotations maintain 3D positioning
-   - **Zoom** in/out to observe annotation scaling behavior
+
+1. **Add Annotations** - Click "Add Annotations" to create 8 numbered corner annotations
+2. **Remove Annotations** - Click "Remove Annotations" to clear all annotations from the scene
+3. **Monitor Activity** - Watch the activity log for operation feedback
+4. **Rotate View** - Navigate around to see annotations maintain their 3D positions
 
 ## API Reference
 
 This example uses the WebVis Context, Viewer and Annotation APIs.  
-See the official documentation for details:  
+See the official documentation for details:
+
 - [WebVis Context API](https://docs.threedy.io/latest/doc/webvis/interfaces/ContextAPI.html#contextapi)
 - [WebVis Viewer API](https://docs.threedy.io/latest/doc/webvis/interfaces/ViewerAPI.html#viewerapi)
 - [WebVis Annotation API](https://docs.threedy.io/latest/doc/webvis/interfaces/AnnotationAPI.html#annotationapi)
