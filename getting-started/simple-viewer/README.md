@@ -1,4 +1,3 @@
-
 # Simple WebVis Viewer
 
 ![Simple WebVis Viewer](./thumb.png)
@@ -16,11 +15,24 @@ This example demonstrates the most basic WebVis implementation - a clean, minima
 - **Essential API**: Core WebVis API usage patterns
 
 ## Getting Started
+
 **Interact with the Viewer**:
-   - **Rotate**: Click and drag to rotate the camera around the cube
-   - **Zoom**: Use mouse wheel to zoom in and out
-   - **Pan**: Right-click and drag to pan the camera
-   - **Observe**: Study the minimal code implementation in the source files
+
+- **Rotate**: Click and drag to rotate the camera around the cube
+- **Zoom**: Use mouse wheel to zoom in and out
+- **Pan**: Right-click and drag to pan the camera
+- **Observe**: Study the minimal code implementation in the source files
+
+### Key WebVis Integration Points
+
+1. **Context Setup** (`init()` function):
+
+    - Component selection: `document.querySelector('webvis-viewer')`
+    - Context request: `webvisComponent.requestContext()`
+
+2. **Model Operations** (`loadModel()` function):
+    - Adding models: `webvisContext.add()`
+    - Setting properties: `webvisContext.setProperty()`
 
 ## Use Cases
 
@@ -32,7 +44,8 @@ This example demonstrates the most basic WebVis implementation - a clean, minima
 ## API Reference
 
 This example uses the WebVis Context.  
-See the official documentation for details:  
+See the official documentation for details:
+
 - [WebVis Context API](https://docs.threedy.io/latest/doc/webvis/interfaces/ContextAPI.html#contextapi)
 
 ---

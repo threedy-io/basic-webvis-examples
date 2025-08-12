@@ -1,6 +1,6 @@
-# Context and Viewer API
+# Canvas Example 
 
-![Context and Viewer API](./thumb.png)
+![Canvas Example](./thumb.png)
 
 ## Overview
 

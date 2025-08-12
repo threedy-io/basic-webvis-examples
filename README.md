@@ -103,6 +103,19 @@ The primary target is the **Kubernetes** platform, which is also highly recommen
 - You can change these examples to use our own instant3dhub installation. To do that, You need to change the link of webvis.js?next in the index.html file:  
   `<script src="YOUR_HUB_INSTANCE/repo/webvis/webvis.js?next"></script>`
 
+## Code Structure for Developers
+
+This example includes clear markers to help developers identify WebVis-specific code:
+
+### Finding WebVis API Calls
+
+All WebVis API interactions are marked with `WEBVIS_API:` comments in the code. Search for this keyword to quickly locate:
+
+- Context creation and management
+- Model loading and manipulation
+- Property settings and configurations
+- All direct WebVis library calls
+
 ## Primitive and Placeholder Objects
 
 instant3Dhub provides a small set of basic 3D models for testing and development. These primitives can be used as placeholders or for prototyping applications. Each model is referenced by a URN:

@@ -2,169 +2,92 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Dynamic Structure</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title data-template="title">Dynamic Structure - WebVis Demo</title>
         <!-- Please replace URL with your own webvisURL -->
         <script src="https://demo.threedy.io/repo/webvis/webvis.js?next"></script>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            html,
-            body {
-                width: 100%;
-                height: 100%;
-                font-family:
-                    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-                    Cantarell, sans-serif;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                overflow: hidden;
-            }
-
-            .container {
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-                padding: 1rem;
-                gap: 1.5rem;
-            }
-
-            .header {
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(10px);
-                border-radius: 16px;
-                padding: 1rem;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                text-align: center;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-                font-weight: 700;
-                color: #2c3e50;
-                margin-bottom: 0.5rem;
-                background: linear-gradient(135deg, #667eea, #764ba2);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-
-            .subtitle {
-                font-size: 1.1rem;
-                color: #5a6c7d;
-                font-weight: 500;
-                margin-bottom: 1.5rem;
-            }
-
-            .controls {
-                display: flex;
-                justify-content: center;
-                gap: 1rem;
-            }
-
-            button {
-                background: linear-gradient(135deg, #667eea, #764ba2);
-                color: white;
-                border: none;
-                padding: 1rem 2rem;
-                border-radius: 12px;
-                font-size: 1rem;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
-            }
-
-            button:hover:not(:disabled) {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-            }
-
-            button:disabled {
-                opacity: 0.6;
-                cursor: not-allowed;
-                transform: none;
-            }
-
-            .viewer-container {
-                flex: 1;
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(10px);
-                border-radius: 16px;
-                padding: 1.5rem;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .viewer-label {
-                font-size: 0.9rem;
-                font-weight: 600;
-                color: #5a6c7d;
-                margin-bottom: 1rem;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-            }
-
-            webvis-full {
-                flex: 1;
-                width: 100%;
-                border-radius: 12px;
-                overflow: hidden;
-                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            }
-
-            @media (max-width: 768px) {
-                .container {
-                    padding: 1rem;
-                    gap: 1rem;
-                }
-
-                h1 {
-                    font-size: 2rem;
-                }
-
-                .header {
-                    padding: 1.5rem;
-                }
-
-                .viewer-container {
-                    padding: 1rem;
-                }
-
-                button {
-                    padding: 0.8rem 1.5rem;
-                    font-size: 0.9rem;
-                }
-            }
-        </style>
+        <link rel="stylesheet" href="./style.css" />
+        <!-- Custom styles can be added here -->
     </head>
 
     <body>
-        <div class="container">
-            <div class="header">
-                <h1>Dynamic Structure</h1>
-                <p class="subtitle">
-                    Load and display complex 3D structures from JSON configuration
-                </p>
-                <div class="controls">
-                    <button id="initBtn">Load Dynamic Structure</button>
+        <div class="webvis-template">
+            <!-- Header -->
+            <header class="template-header">
+                <div class="header-brand">
+                    <div class="brand-logo" data-template="logo">
+                        <img src="/public/assets/logo.png" alt="Logo" />
+                    </div>
+                    <div class="brand-content">
+                        <h1 data-template="header-title">Dynamic Structure</h1>
+                        <p data-template="header-description">
+                            This example shows how to load and construct complex 3D structures
+                            dynamically using JSON configuration files.<br />
+                            Discover how to create hierarchical node structures, apply
+                            transformations, configure appearances, and manage parent-child
+                            relationships in WebVis through a data-driven workflow.
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </header>
 
-            <div class="viewer-container">
-                <div class="viewer-label">3D Viewer</div>
-                <webvis-full></webvis-full>
-            </div>
+            <!-- Sidebar -->
+            <aside class="template-sidebar">
+                <!-- Controls Panel -->
+                <div class="sidebar-panel controls">
+                    <h2 class="panel-title" data-template="controls-title">Structure Controls</h2>
+
+                    <div data-template="controls-content">
+                        <div class="control-section">
+                            <h3>Initialize Scene</h3>
+                            <div class="control-group">
+                                <button id="initBtn" class="form-button full-width">
+                                    🚀 Initialize Context
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="control-section">
+                            <h3>Build Structure</h3>
+                            <div class="control-group">
+                                <button
+                                    id="addStructureBtn"
+                                    class="form-button full-width"
+                                    disabled
+                                >
+                                    📦 Add Structure from JSON
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Log Panel -->
+                <div class="sidebar-panel activity" data-template="activity-panel">
+                    <h2 class="panel-title">📋 Activity Log</h2>
+                    <div class="activity-log" id="activityLog">
+                        <!-- Activity entries will be added here dynamically -->
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 3D Viewer -->
+            <main class="template-viewer">
+                <div class="viewer-overlay" data-template="viewer-overlay">
+                    <span>WebVis Viewer</span>
+                </div>
+                <webvis-viewer></webvis-viewer>
+                <webvis-tree
+                    id="#treeView"
+                    context="default_context"
+                    viewer="default_viewer"
+                ></webvis-tree>
+                <webvis-navigation-cube></webvis-navigation-cube>
+            </main>
         </div>
 
-        <script src="index.js"></script>
+        <!-- Custom JavaScript -->
+        <script src="./index.js"></script>
     </body>
 </html>

@@ -19,10 +19,10 @@
                         <img src="/public/assets/logo.png" alt="Logo" />
                     </div>
                     <div class="brand-content">
-                        <h1 data-template="header-title">Simple Viewer</h1>
+                        <h1 data-template="header-title">Canvas Example</h1>
                         <p data-template="header-description">
-                            This is the simplest WebVis example, demonstrating basic context
-                            creation and model loading with minimal setup.
+                            This WebVis example demonstrates basic context creation and model
+                            loading with minimal setup using an HTML canvas.
                         </p>
                     </div>
                 </div>
@@ -38,8 +38,14 @@
                         <div class="control-section">
                             <h3>Scene Content</h3>
                             <div class="control-group">
-                                <button id="loadModelBtn" class="form-button full-width">
-                                    📦 Load Default Model
+                                <button id="initBtn" class="form-button full-width">
+                                    🚀 Initialize Context
+                                </button>
+                                <button id="viewerBtn" class="form-button full-width" disabled>
+                                    👁️ Create Viewer
+                                </button>
+                                <button id="addModelBtn" class="form-button full-width" disabled>
+                                    📦 Add Model
                                 </button>
                             </div>
                         </div>
@@ -58,10 +64,9 @@
             <!-- 3D Viewer -->
             <main class="template-viewer">
                 <div class="viewer-overlay" data-template="viewer-overlay">
-                    <span>WebVis Viewer</span>
+                    <span>WebVis Viewer - Canvas</span>
                 </div>
-                <webvis-viewer id="canvas"></webvis-viewer>
-                <webvis-navigation-cube></webvis-navigation-cube>
+                <canvas id="firstCanvas"></canvas>
             </main>
         </div>
 

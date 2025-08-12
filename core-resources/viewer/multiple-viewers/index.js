@@ -1,24 +1,64 @@
-const canvas1 = document.querySelector('#firstCanvas');
-const canvas2 = document.querySelector('#secondCanvas');
-const canvas3 = document.querySelector('#thirdCanvas');
-const canvas4 = document.querySelector('#fourthCanvas');
+/**
+ * Multiple Viewers Example
+ * This example demonstrates multiple viewers attached to the same WebVis context
+ */
+
+// =========================
+// Variable Declarations
+// =========================
+let activityLog = [];
+let context = null;
 
 const initBtn = document.querySelector('#initBtn');
 const addModelBtn = document.querySelector('#addModelBtn');
 const clipBtn = document.querySelector('#clipBtn');
 
-let context = null;
+/**
+ * Initializes the WebVis context and creates multiple viewers
+ */
+async function init() {
+    try {
+        logActivity('info', 'Initializing WebVis context...');
+
+        // WEBVIS_API: Create Context
+        context = await webvis.getContext('myContext');
+        logActivity('success', 'WebVis context initialized');
+
+        logActivity('info', 'Creating multiple viewers...');
+
+        initBtn.disabled = true;
+        initBtn.textContent = '✅ Initialized';
+        addModelBtn.disabled = false;
+
+        logActivity('success', 'Multiple Viewers example ready!');
+    } catch (error) {
+        logActivity('error', `Initialization failed: ${error.message}`);
+    }
+}
 
 /**
  * Adds a model to the given context
  * @param {Object} ctx - The WebVis context
  */
 async function addModel(ctx) {
-    const modelId = ctx.add({
-        dataURI: 'urn:x-i3d:examples:catia:bike',
-    });
-    // Enable the Dataset
-    await ctx.setProperty(modelId, webvis.Property.ENABLED, true);
+    try {
+        logActivity('info', 'Adding model to context...');
+        // WEBVIS_API: Add a simple box model to the scene
+        const modelId = ctx.add({
+            dataURI: 'urn:x-i3d:examples:catia:bike',
+        });
+
+        // WEBVIS_API: Enable the Dataset
+        await ctx.setProperty(modelId, webvis.Property.ENABLED, true);
+
+        addModelBtn.disabled = true;
+        addModelBtn.textContent = '✅ Model Added';
+        clipBtn.disabled = false;
+
+        logActivity('success', 'Model successfully added to all viewers');
+    } catch (error) {
+        logActivity('error', `Failed to add model: ${error.message}`);
+    }
 }
 
 /**
@@ -26,44 +66,58 @@ async function addModel(ctx) {
  * @param {Object} ctx - The WebVis context
  */
 async function addClipPlane(ctx) {
-    // Get the Bounding Box of our Model
-    const boundingBox = await ctx.getProperty(1, webvis.Property.GLOBAL_VOLUME);
+    try {
+        logActivity('info', 'Adding clip plane...');
 
-    // Create a Clip Plane at the center of the Model
-    const clipPlaneId = ctx.createClipPlane({
-        position: boundingBox.getCenter(),
-    });
+        // WEBVIS_API: Get the Bounding Box of our Model
+        const boundingBox = await ctx.getProperty(1, webvis.Property.GLOBAL_VOLUME);
+
+        // WEBVIS_API: Create a Clip Plane at the center of the Model
+        const clipPlaneId = ctx.createClipPlane({
+            position: boundingBox.getCenter(),
+        });
+
+        clipBtn.disabled = true;
+        clipBtn.textContent = '✅ Clip Plane Added';
+
+        logActivity('success', 'Clip plane successfully added to all viewers');
+    } catch (error) {
+        logActivity('error', `Failed to add clip plane: ${error.message}`);
+    }
 }
 
 /**
- * Initializes the WebVis context and creates multiple viewers
+ * Logs an activity message with a timestamp.
+ * @param {string} type - The type of log entry ('info', 'success', 'warning', 'error')
+ * @param {string} message - The message to log
  */
-async function init() {
-    // Create Context
-    context = await webvis.requestContext('myContext');
-    console.log('initialized context');
-    //Create Viewers
-    const viewer1 = context.createViewer('myFirstViewer', canvas1);
-    const viewer2 = context.createViewer('mySecondViewer', canvas2);
-    const viewer3 = context.createViewer('myThirdViewer', canvas3);
-    const viewer4 = context.createViewer('myFourthViewer', canvas4);
-    console.log('initialized viewers');
+function logActivity(type = 'info', message) {
+    const timestamp = new Date().toLocaleTimeString();
+    const entry = { type, message, timestamp };
+    activityLog.push(entry);
+
+    const logContainer = document.getElementById('activityLog');
+    if (logContainer) {
+        const logEntry = document.createElement('div');
+        logEntry.className = `log-entry ${type}`;
+        logEntry.innerHTML = `<span class="log-time">${timestamp}</span> <span class="log-message">${message}</span>`;
+        logContainer.appendChild(logEntry);
+        logContainer.scrollTop = logContainer.scrollHeight;
+    }
 }
 
 // Event listeners for buttons
 initBtn.addEventListener('click', () => {
     init();
-    initBtn.disabled = true;
-    addModelBtn.disabled = false;
 });
 
 addModelBtn.addEventListener('click', () => {
     addModel(context);
-    addModelBtn.disabled = true;
-    clipBtn.disabled = false;
 });
 
 clipBtn.addEventListener('click', () => {
     addClipPlane(context);
-    clipBtn.disabled = true;
 });
+
+// Initialize the template
+logActivity('info', 'WebVis Multiple Viewers example loaded');
