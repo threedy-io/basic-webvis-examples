@@ -21,18 +21,10 @@ This repository serves as a comprehensive resource for both new and experienced 
 
 - [**getting-started/**](getting-started/): Introductory examples to help new users quickly set up and use WebVis viewers.
 - [**core-resources/**](core-resources/): Foundational examples and resources for working with WebVis, including context management, events, and rendering.
-- [**inspection/**](inspection/): Examples related to inspecting and analyzing 3D models and scenes.
 - [**markup/**](markup/): Demonstrations of annotation, drawing, and markup capabilities, including 2D and 3D markers.
-- [**measuring/**](measuring/): Examples for measuring distances, areas, and other properties within the viewer.
-- [**moving-scaling-and-rotating/**](moving-scaling-and-rotating/): Interactions for transforming objects in the scene.
-- [**navigation/**](navigation/): Camera and scene navigation examples.
-- [**rendering-3d-visualization/**](rendering-3d-visualization/): Advanced rendering and visualization techniques.
-- [**searching-and-filtering/**](searching-and-filtering/): Examples for searching and filtering scene content.
-- [**selection-and-highlighting/**](selection-and-highlighting/): Techniques for selecting and highlighting objects.
+- [**moving-scaling-rotating/**](moving-scaling-rotating/): Interactions for transforming objects in the scene including explosion effects.
 - [**setup/**](setup/): Integration and setup examples, including iframe integration.
-- [**sharing/**](sharing/): Examples for sharing scenes or data.
-- [**storing-saving/**](storing-saving/): Saving and session management examples.
-- [**xr/**](xr/): Extended reality (XR) examples, including AR/VR features.
+
 
 Each subfolder typically contains:
 - `index.html`: The main example page.
@@ -131,6 +123,9 @@ instant3Dhub provides a small set of basic 3D models for testing and development
 - `urn:x-i3d:shape:switch`
 - `urn:x-i3d:shape:cap`
 - `urn:x-i3d:shape:418` (teapot)
+- `urn:x-i3d:examples:catia:bike` (bike)
+- `urn:x-i3d:examples:x3d:v8` (Engine v8)
+
 
 # License
 
