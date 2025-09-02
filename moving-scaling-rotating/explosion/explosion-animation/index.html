@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title data-template="title">Animated Explosion Example</title>
+        <!-- Please replace URL with your own webvisURL -->
+        <script src="https://hubdemo.threedy.io/repo/webvis/webvis.js?next"></script>
+        <link rel="stylesheet" href="./style.css" />
+        <!-- Custom styles can be added here -->
+        <style data-template="custom-styles">
+            /* Example-specific styles go here */
+        </style>
+    </head>
+
+    <body>
+        <div class="webvis-template">
+            <!-- Header -->
+            <header class="template-header">
+                <div class="header-brand">
+                    <div class="brand-logo" data-template="logo">
+                        <img src="/public/assets/logo.png" alt="Logo" />
+                    </div>
+                    <div class="brand-content">
+                        <h1 data-template="header-title">Animated Explosion Example</h1>
+                        <p data-template="header-description">
+                            Demonstrates smooth explosion animations using WebVis Animation API
+                        </p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Sidebar -->
+            <aside class="template-sidebar">
+                <!-- Controls Panel -->
+                <div class="sidebar-panel controls">
+                    <h2 class="panel-title" data-template="controls-title">Explosion Controls</h2>
+
+                    <!-- Custom controls section - replace this entire div -->
+                    <div data-template="controls-content">
+                        <div class="control-section">
+                            <div class="control-group">
+                                <label for="explosionFactor">Explosion Factor:</label>
+                                <input
+                                    type="range"
+                                    id="explosionFactor"
+                                    class="form-input"
+                                    min="0.1"
+                                    max="3.0"
+                                    step="0.1"
+                                    value="1.0"
+                                />
+                                <span id="explosionFactorValue">1.0</span>
+                            </div>
+                            <div class="control-group">
+                                <label for="animationDuration">Animation Duration (ms):</label>
+                                <input
+                                    type="range"
+                                    id="animationDuration"
+                                    class="form-input"
+                                    min="500"
+                                    max="5000"
+                                    step="100"
+                                    value="2000"
+                                />
+                                <span id="animationDurationValue">2000</span>
+                            </div>
+                            <div class="control-group">
+                                <button class="form-button full-width" onclick="performExplosion()">
+                                    🎬 Animate Explosion
+                                </button>
+                                <button
+                                    class="form-button secondary full-width"
+                                    onclick="performReset()"
+                                >
+                                    🔄 Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Log Panel -->
+                <div class="sidebar-panel activity" data-template="activity-panel">
+                    <h2 class="panel-title">📋 Activity Log</h2>
+                    <div class="activity-log" id="activityLog">
+                        <!-- Activity entries will be added here dynamically -->
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 3D Viewer -->
+            <main class="template-viewer">
+                <div class="viewer-overlay" data-template="viewer-overlay">
+                    <!-- Overlay content can be customized -->
+                    <span>WebVis Viewer</span>
+                </div>
+                <webvis-viewer></webvis-viewer>
+                <webvis-navigation-cube></webvis-navigation-cube>
+            </main>
+        </div>
+
+        <!-- Template JavaScript -->
+        <!-- <script src="../shared/webvis-template.js"></script> -->
+
+        <!-- Custom JavaScript - replace with your example script -->
+        <script src="./index.js"></script>
+    </body>
+</html>
