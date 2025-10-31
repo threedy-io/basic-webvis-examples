@@ -2,6 +2,8 @@
 
 ![Simple Annotations Example](./thumb.png)
 
+**🌐 [View Live Example](https://threedy-io.github.io/basic-webvis-examples/markup/annotate/simple-annotation/)**
+
 ## Overview
 
 This example demonstrates basic WebVis annotation functionality by creating and removing simple text annotations at all 8 corners of a cube model. Perfect for learning the fundamentals of WebVis annotation API.

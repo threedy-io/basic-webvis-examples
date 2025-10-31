@@ -2,6 +2,8 @@
 
 ![Advanced Annotations Example](./thumb.png)
 
+**🌐 [View Live Example](https://threedy-io.github.io/basic-webvis-examples/markup/annotate/advanced-annotation/)**
+
 ## Overview
 
 This example demonstrates advanced usage of the WebVis Annotation API with rich HTML content types. Create annotations with formatted text, embedded PDFs, images, and video content positioned at the corners of a 3D cube model.

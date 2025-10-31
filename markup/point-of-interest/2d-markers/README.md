@@ -2,6 +2,8 @@
 
 ![2D Markers](./thumb.png)
 
+**🌐 [View Live Example](https://threedy-io.github.io/basic-webvis-examples/markup/point-of-interest/2d-markers/)**
+
 ## Overview
 
 This example demonstrates how to create HTML markers that track 3D positions in real-time. Click a button to place 8 numbered markers at the corners of a cube, then watch them maintain their screen positions as you navigate around the 3D scene.

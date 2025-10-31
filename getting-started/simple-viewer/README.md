@@ -2,6 +2,8 @@
 
 ![Simple WebVis Viewer](./thumb.png)
 
+**🌐 [View Live Example](https://threedy-io.github.io/basic-webvis-examples/getting-started/simple-viewer/)**
+
 ## Overview
 
 This example demonstrates the most basic WebVis implementation - a clean, minimalistic 3D viewer with a simple cube model. Perfect for getting started with WebVis or understanding the fundamental setup required for any WebVis application.

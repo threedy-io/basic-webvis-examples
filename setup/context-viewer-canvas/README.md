@@ -1,6 +1,8 @@
-# Canvas Example 
+# Canvas Example
 
 ![Canvas Example](./thumb.png)
+
+**🌐 [View Live Example](https://threedy-io.github.io/basic-webvis-examples/setup/context-viewer-canvas/)**
 
 ## Overview
 
@@ -18,15 +20,17 @@ This example demonstrates the fundamental WebVis Context and Viewer API, showing
 ## Getting Started
 
 **Follow the API Workflow**:
-   - **Click "initialize context"** to create a WebVis context
-   - **Click "create viewer"** to attach a viewer to the canvas
-   - **Click "add model"** to load and display a 3D model
-   - **Interact** with the 3D model using standard WebVis navigation controls
+
+- **Click "initialize context"** to create a WebVis context
+- **Click "create viewer"** to attach a viewer to the canvas
+- **Click "add model"** to load and display a 3D model
+- **Interact** with the 3D model using standard WebVis navigation controls
 
 ## API Reference
 
 This example uses the WebVis Context and Viewer APIs.  
-See the official documentation for details:  
+See the official documentation for details:
+
 - [WebVis Context API](https://docs.threedy.io/latest/doc/webvis/interfaces/ContextAPI.html#contextapi)
 - [WebVis Viewer API](https://docs.threedy.io/latest/doc/webvis/interfaces/ViewerAPI.html#viewerapi)
 

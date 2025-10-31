@@ -1,7 +1,8 @@
-
 # Dynamic Structure Loading
 
 ![Dynamic Structure Loading](./thumb.png)
+
+**🌐 [View Live Example](https://threedy-io.github.io/basic-webvis-examples/core-resources/instance-graph/dynamic-structure/)**
 
 ## Overview
 
@@ -17,14 +18,16 @@ This example demonstrates how to dynamically load and build complex 3D structure
 ## Getting Started
 
 **Load Dynamic Structure**:
-   - **Click "Load Dynamic Structure"** to fetch and build the 3D structure from JSON
-   - **Observe Loading**: Watch as the button changes to "Loading..." then "Structure Loaded"
-   - **Explore Structure**: Navigate around the loaded 3D structure
-   - **Inspect Console**: Check browser console for loading progress and any errors
+
+- **Click "Load Dynamic Structure"** to fetch and build the 3D structure from JSON
+- **Observe Loading**: Watch as the button changes to "Loading..." then "Structure Loaded"
+- **Explore Structure**: Navigate around the loaded 3D structure
+- **Inspect Console**: Check browser console for loading progress and any errors
 
 ## JSON Structure Format
 
 The example uses a JSON file (`simple_struct.json`) with the following structure:
+
 ```json
 {
   "root": "nodeId",
@@ -44,16 +47,19 @@ The example uses a JSON file (`simple_struct.json`) with the following structure
 
 - **WebVis Source**: The example uses the demo instance at `https://demo.threedy.io/repo/webvis/webvis.js?next`
 - **Custom Configuration**: To use your own instant3Dhub installation, update the script source in `index.html`:
-  ```html
-  <script src="YOUR_HUB_INSTANCE/repo/webvis/webvis.js"></script>
-  ```
+    ```html
+    <script src="YOUR_HUB_INSTANCE/repo/webvis/webvis.js"></script>
+    ```
+
 ## API Reference
 
 This example uses the WebVis Context, Viewer and Instance Graph APIs.  
-See the official documentation for details:  
+See the official documentation for details:
+
 - [WebVis Context API](https://docs.threedy.io/latest/doc/webvis/interfaces/ContextAPI.html#contextapi)
 - [WebVis Viewer API](https://docs.threedy.io/latest/doc/webvis/interfaces/ViewerAPI.html#viewerapi)
 - [WebVis Instance Graph API](https://docs.threedy.io/latest/doc/webvis/interfaces/InstanceGraphAPI.html#instancegraphapi)
+
 ---
 
 **Note**: This example uses the WebVis library hosted on our demo instance. For production use, replace the library URL with your own instant3Dhub installation.

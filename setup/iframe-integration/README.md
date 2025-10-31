@@ -2,6 +2,8 @@
 
 ![iframe Integration](./thumb.png)
 
+**🌐 [View Live Example](https://threedy-io.github.io/basic-webvis-examples/setup/iframe-integration/)**
+
 ## Overview
 
 This example demonstrates WebVis integration within HTML iframes and cross-frame communication. A WebVis viewer runs inside an iframe with a simple cube model, and when you interact with the cube, events are forwarded to the parent window and displayed in real-time.

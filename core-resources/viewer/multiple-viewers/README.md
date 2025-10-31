@@ -2,6 +2,8 @@
 
 ![Multiple Viewers](./thumb.png)
 
+**🌐 [View Live Example](https://threedy-io.github.io/basic-webvis-examples/core-resources/viewer/multiple-viewers/)**
+
 ## Overview
 
 This example demonstrates how to create multiple WebVis viewers that share the same context, showcasing the fundamental relationship between contexts and viewers. Learn how changes to one viewer automatically propagate to all other viewers sharing the same context, enabling synchronized visualization across multiple viewports.
@@ -17,17 +19,19 @@ This example demonstrates how to create multiple WebVis viewers that share the s
 
 ## Getting Started
 
- **Interact with Multiple Viewers**:
-   - **Click "init context & viewers"** to initialize the WebVis context and create four viewers
-   - **Click "add model"** to load a 3D model that appears in all viewers
-   - **Click "add clip plane"** to add a clipping plane that affects all viewers simultaneously
-   - **Navigate** in any viewer to see how camera movements are independent per viewer
-   - **Observe** how the clip plane and model state are shared across all viewers
+**Interact with Multiple Viewers**:
+
+- **Click "init context & viewers"** to initialize the WebVis context and create four viewers
+- **Click "add model"** to load a 3D model that appears in all viewers
+- **Click "add clip plane"** to add a clipping plane that affects all viewers simultaneously
+- **Navigate** in any viewer to see how camera movements are independent per viewer
+- **Observe** how the clip plane and model state are shared across all viewers
 
 ## API Reference
 
 This example uses the WebVis Context and Viewer APIs.  
-See the official documentation for details:  
+See the official documentation for details:
+
 - [WebVis Context API](https://docs.threedy.io/latest/doc/webvis/interfaces/ContextAPI.html#contextapi)
 - [WebVis Viewer API](https://docs.threedy.io/latest/doc/webvis/interfaces/ViewerAPI.html#viewerapi)
 
