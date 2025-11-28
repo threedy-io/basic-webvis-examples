@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Query Semantic PMI - WebVis Demo</title>
+        <!-- Please replace URL with your own webvisURL -->
+        <script src="https://hubdemo.threedy.io/repo/webvis/webvis.js"></script>
+        <link rel="stylesheet" href="./style.css" />
+        <!-- Custom styles can be added here -->
+        <style>
+            .pmi-result {
+                padding: 8px;
+                margin: 4px 0;
+                background: var(--surface-elevated);
+                border: 1px solid var(--border);
+                border-radius: var(--border-radius-sm);
+                font-size: 12px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .pmi-result:hover {
+                background: var(--primary-color);
+                color: white;
+                transform: translateX(4px);
+                box-shadow: var(--shadow);
+            }
+
+            .pmi-result:hover .pmi-result-label,
+            .pmi-result:hover .pmi-result-id {
+                color: white !important;
+            }
+
+            .pmi-result.selected {
+                background: var(--primary-color);
+                color: white;
+                box-shadow: var(--shadow);
+            }
+
+            .pmi-result.selected .pmi-result-label,
+            .pmi-result.selected .pmi-result-id {
+                color: white !important;
+            }
+
+            .stats-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+                margin-bottom: 16px;
+            }
+
+            .stat-card {
+                padding: 12px;
+                background: var(--surface-elevated);
+                border-radius: var(--border-radius-sm);
+                border: 1px solid var(--border);
+            }
+
+            .stat-value {
+                font-size: 24px;
+                font-weight: 700;
+                color: var(--primary-color);
+            }
+
+            .stat-label {
+                font-size: 11px;
+                color: var(--text-secondary);
+                text-transform: uppercase;
+                margin-top: 4px;
+            }
+
+            .results-container {
+                max-height: 300px;
+                overflow-y: auto;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="webvis-template">
+            <!-- Header -->
+            <header class="template-header">
+                <div class="header-brand">
+                    <div class="brand-logo">
+                        <img src="/public/assets/logo.png" alt="Logo" />
+                    </div>
+                    <div class="brand-content">
+                        <h1>Query Semantic PMI</h1>
+                        <p>Demonstrate the use of queryAPI to search for PMIs in AUX nodes</p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Sidebar -->
+            <aside class="template-sidebar">
+                <!-- Controls Panel -->
+                <div class="sidebar-panel controls">
+                    <h2 class="panel-title">Controls</h2>
+
+                    <!-- PMI Types Section -->
+                    <div class="control-section">
+                        <h3>PMI Types</h3>
+                        <div class="control-group">
+                            <button id="loadPMITypesBtn" class="form-button full-width">
+                                Load Available PMI Types
+                            </button>
+                            <select id="pmiTypeSelect" class="form-select" disabled>
+                                <option value="">Select a PMI type...</option>
+                            </select>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-value" id="totalTypes">0</div>
+                                <div class="stat-label">Types Available</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="totalPMIs">0</div>
+                                <div class="stat-label">Total PMIs</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search Section -->
+                    <div class="control-section">
+                        <h3>Search PMI</h3>
+                        <div class="control-group">
+                            <input
+                                type="text"
+                                id="searchInput"
+                                class="form-input"
+                                placeholder="Enter PMI label to search..."
+                                disabled
+                                onkeypress="if(event.key === 'Enter') document.getElementById('searchPMIBtn').click()"
+                            />
+                            <button id="searchPMIBtn" class="form-button full-width" disabled>
+                                Search PMI by Label
+                            </button>
+                            <button id="queryAllBtn" class="form-button full-width" disabled>
+                                Query All PMIs of Selected Type
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div class="control-section">
+                        <h3>Query Results</h3>
+                        <div class="results-container" id="resultsContainer">
+                            <p class="text-secondary">
+                                No results yet. Load PMI types and perform a search.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Log Panel -->
+                <div class="sidebar-panel activity">
+                    <h2 class="panel-title">Activity Log</h2>
+                    <div class="activity-log" id="activityLog"></div>
+                </div>
+            </aside>
+
+            <!-- Main Viewer -->
+            <main class="template-viewer">
+                <webvis-viewer></webvis-viewer>
+            </main>
+        </div>
+
+        <script src="./index.js"></script>
+    </body>
+</html>
